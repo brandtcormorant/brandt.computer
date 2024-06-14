@@ -58,6 +58,10 @@ I present you with this salty answer not to give you shit, but to help you succe
 
 You saw that current obsessions list, yeah? If you're not contacting me with salient information about one of those things you are at a severe disadvantage and likely misspending your time.
 
+### Why is your header on this page so dramatic?
+
+iykyk
+
 <hr style="border-color:#353531; margin-top: 3em; margin-bottom:3.5em;">
 
 ## Where I exist
