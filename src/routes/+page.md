@@ -29,7 +29,7 @@ I'm using those tools to create projects related to my current obsessions.
 
 <hr style="border-color:#353531; margin-top: 3em; margin-bottom:3.5em;">
 
-## Frequently asked questions
+## Frequently asked questions (probably)
 
 ### Is Brandt Cormorant your real name?
 
