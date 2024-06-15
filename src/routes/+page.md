@@ -48,11 +48,11 @@ Wouldn't you like to know.
 
 Listen, when you contact a neurogoofball like me there's a few things that can happen. In order of likelihood:
 
-1. The message you sent is never seen.
-1. The message is seen and immediately forgotten.
-1. The message is read and deleted because it is ethically, financially, or aesthetically gross.
-1. The message is read with interest and filed away as "not related to current obsession but future me will probably like it" and you'll receive a response some time between weeks later and never.
-1. The message is read carefully and immediately responded to because it relates to something I'm currently obsessed with.
+1. The message is never seen.
+2. The message is seen and immediately forgotten.
+3. The message is read and deleted because it is ethically, financially, or aesthetically gross.
+4. The message is read with interest and filed away as "not related to current obsession but future me will probably like it" and I'll send a response some time between later and never.
+5. The message is read carefully and immediately responded to because it relates to something I'm currently obsessed with.
 
 I present you with this salty answer not to give you shit, but to help you succeed and prepare you for the worst.
 
@@ -67,6 +67,7 @@ iykyk
 ## Where I exist
 
 - [𝕏](https://x.com/brandtcormorant) - Pure nightmare fuel.
+- [GitHub](https://github.com/brandtcormorant) - If you like collaborating on code!
 - [Substack](https://brandtcormorant.substack.com) - If you like getting email newsletters!
 - [Telegram](https://t.me/brandtcormorantprojects) - I try not to spend time here. 
 - Email: firstlast at proton dot me - A pit that I infrequently gaze into and contemplate my life choices.
