@@ -8,7 +8,9 @@
 
 Hi, I'm Brandt. I have fun making neat things.
 
-The transition from traditional apps and currencies to distributed apps and currencies is difficult. I want to make it easier for people who are just getting started.
+I want to make the transition from traditional software to distributed software easier for people who are just getting started. That transition can be difficult, especially in the case of transitioning from traditional currencies to digital, distributed currencies.
+
+There's so much we can do to improve the experience for people.
 
 Right now I'm creating projects involving:
 
