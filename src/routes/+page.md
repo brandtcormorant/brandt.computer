@@ -38,9 +38,10 @@ I'm using those tools to create projects related to my current obsessions.
 Who cares? Do a quick web search and you'll learn some things about me:
 
 - I believe there's a **best coast**.
-- **Birds** are **cool**.
+- I'm learning Rust to go deeper into the systems that run Solana and other software.
 - I like **metaphors, analogies, & abstractions**.
 - The self is a malleable entity, our existence in the universe is volatile, impacted by and impacting other selves; sometimes within our own bodies, floating in our dreams, building cityscapes from our memories, powering vehicles of creation with our hopes; sometimes standing on rocks as waves crash around us and wind pushes our clothes so intensely that maybe we can have wings, maybe we can soar and dive, slipping fast into the ocean's surface at such great speed that we can plunge deep underwater and assault fish with our mouths.
+- **Birds** are **cool**.
 
 ### Are you a bird?
 
