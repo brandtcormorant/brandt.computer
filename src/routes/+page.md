@@ -73,6 +73,6 @@ iykyk
 - [GitHub](https://github.com/brandtcormorant) - If you like collaborating on code!
 - [Substack](https://brandtcormorant.substack.com) - If you like getting email newsletters!
 - [Telegram](https://t.me/brandtcormorantprojects) - I try not to spend time here. 
-- Email: firstlast at proton dot me - A pit that I infrequently gaze into and contemplate my life choices.
+- Email: firstlast at proton dot me - A pit that I infrequently gaze into, contemplate my life choices, and imagine I am alone in a sparse forest, walking gently in the sun, eating wood sorrel seed pods, and feeling at peace with the destruction of the world.
 
 <br>
