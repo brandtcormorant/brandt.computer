@@ -28,6 +28,7 @@ I'm using those tools to create projects related to my current obsessions.
 - Community-maintained, transparent financial systems
 - Evaluating the ways local state and global state compliment each other
 - Identity, privacy, and security in distributed networks
+- Fiction, games, and music.
 
 <hr style="border-color:#353531; margin-top: 3em; margin-bottom:3.5em;">
 
@@ -69,10 +70,10 @@ iykyk
 
 ## Where I exist
 
-- [𝕏](https://x.com/brandtcormorant) - Pure nightmare fuel.
-- [GitHub](https://github.com/brandtcormorant) - If you like collaborating on code!
-- [Substack](https://brandtcormorant.substack.com) - If you like getting email newsletters!
-- [Telegram](https://t.me/brandtcormorantprojects) - I try not to spend time here. 
-- Email: firstlast at proton dot me - A pit that I infrequently gaze into, contemplate my life choices, and imagine I am alone in a sparse forest, walking gently in the sun, eating wood sorrel seed pods, and feeling at peace with the destruction of the world.
+- **[𝕏](https://x.com/brandtcormorant** - Pure nightmare fuel.
+- **[GitHub](https://github.com/brandtcormorant** - If you like collaborating on code!
+- **[Substack](https://brandtcormorant.substack.com** - If you like getting email newsletters!
+- **[Telegram](https://t.me/brandtcormorantprojects** - I try not to spend time here. 
+- **Email** - firstlast at proton dot me - A pit that I infrequently gaze into, contemplate my life choices, and imagine I am alone in a sparse forest, walking gently in the sun, eating wood sorrel seed pods, and feeling at peace with the destruction of the world.
 
 <br>
