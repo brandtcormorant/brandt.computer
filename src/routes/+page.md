@@ -48,7 +48,7 @@ Who cares? Do a quick web search and you'll learn some things about me:
 
 Wouldn't you like to know.
 
-### Can I contact you?
+### How can I contact you?
 
 Listen, when you contact a neurogoofball like me there's a few things that can happen. In order of likelihood:
 
