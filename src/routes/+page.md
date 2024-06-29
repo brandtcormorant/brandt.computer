@@ -71,6 +71,7 @@ iykyk
 ## Where I exist
 
 - **[𝕏](https://x.com/brandtcormorant)** - Pure nightmare fuel.
+- **[Bluesky](https://bsky.app/profile/brandtcormorant.bsky.social)** - Anything could happen.
 - **[GitHub](https://github.com/brandtcormorant)** - If you like collaborating on code!
 - **[Substack](https://brandtcormorant.substack.com)** - If you like getting email newsletters!
 - **[Telegram](https://t.me/brandtcormorantprojects)** - I try not to spend time here. 
