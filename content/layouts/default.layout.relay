@@ -1,0 +1,38 @@
+/// Document shell for brandt.computer: the site's meta tags, the house style
+/// and the site stylesheet, and no site header (it is one page).
+export let layout: ?String = nil
+
+export let render = Function (context: Any) String {
+    return string {
+        <!doctype html>
+        <html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>|context.document_title|</title>
+        <meta name="description" content="Brandt Cormorant - Building offline peer-to-peer applications, distributed financial systems, and exploring identity in distributed networks.">
+        <meta name="author" content="Brandt Cormorant">
+        <meta name="keywords" content="Brandt Cormorant, peer to peer, p2p, distributed systems, Hypercore, Hyperswarm, Bare, Pear, Solana, decentralized, offline-first, local-first">
+        <meta name="robots" content="index, follow">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Brandt Cormorant">
+        <meta property="og:description" content="Building offline peer-to-peer applications, distributed financial systems, and exploring identity in distributed networks.">
+        <meta property="og:url" content="https://brandt.computer/">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:creator" content="@brandtcormorant">
+        <meta name="twitter:title" content="Brandt Cormorant">
+        <meta name="twitter:description" content="Building offline peer-to-peer applications, distributed financial systems, and exploring identity in distributed networks.">
+        <link rel="canonical" href="https://brandt.computer/">
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfaf7">
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#13161a">
+        |context.grammar_links|
+        <link rel="stylesheet" href="|context.stylesheet_href|">
+        </head>
+        <body>
+        <main>
+        |context.content|
+        </main>
+        </body>
+        </html>
+    }
+}

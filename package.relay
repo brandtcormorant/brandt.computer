@@ -1,0 +1,8 @@
+export let name = "brandt-computer"
+export let version = "0.0.1"
+export let dependencies = {
+    static_site: "../../relaylang/static-site",
+    relay_markdown: "../../relaylang/relay-markdown",
+    relay_yaml: "../../relaylang/relay-yaml",
+    style_grammar: "../../workshop/style-grammar",
+}

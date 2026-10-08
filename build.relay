@@ -1,0 +1,49 @@
+#!/usr/bin/env relay
+/// Build the site: content/ in, _site/ out. GitHub Pages serves _site/.
+///
+///     relay build.relay
+import files
+import log
+import path
+import process
+import runtime
+import static_site
+
+let root = runtime.module_directory() as String
+
+let content = path.join([
+    root,
+    "content",
+])
+let output = path.join([
+    root,
+    "_site",
+])
+
+let main = Function ()! {
+    // _site/ is only ever build output; clear it so removed pages do not linger.
+    if (files.exists(output)) {
+        files.remove_tree(output)
+    }
+
+    let site = static_site.Site.make(content, output, "Brandt Cormorant")
+    let pages = site.build()
+
+    let noun = if (pages.length() == 1) {
+        use "page"
+    } else {
+        use "pages"
+    }
+
+    log.print(string {
+        built |pages.length()| |noun| into |output|
+    })
+}
+
+catch main() |message| {
+    process.error(string {
+        build: |message|
+    })
+
+    process.exit(1)
+}
