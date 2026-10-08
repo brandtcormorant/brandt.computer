@@ -7,7 +7,7 @@ import log
 import path
 import process
 import runtime
-import staticdocs
+import static_site { Site }
 
 let root = runtime.module_directory() as String
 
@@ -26,7 +26,7 @@ let main = Function ()! {
         files.remove_tree(output)
     }
 
-    let site = staticdocs.Site.make(content, output, "Brandt Cormorant")
+    let site = Site.make(content, output, "Brandt Cormorant")
     let pages = site.build()
 
     let noun = if (pages.length() == 1) {

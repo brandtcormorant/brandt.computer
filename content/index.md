@@ -14,8 +14,8 @@ I'm working on making distributed software easier for people who are just gettin
 ## Current obsessions
 
 - Offline, peer to peer applications
+- Local AI and agent environments
 - Community-maintained, transparent financial systems
-- Evaluating the ways local state and global state compliment each other
 - Identity, privacy, and security in distributed networks
 - Fiction, games, and music.
 
@@ -25,5 +25,4 @@ I'm working on making distributed software easier for people who are just gettin
 - **[Bluesky](https://bsky.app/profile/brandtcormorant.bsky.social)** - Anything could happen.
 - **[GitHub](https://github.com/brandtcormorant)** - If you like collaborating on code!
 - **[Substack](https://brandtcormorant.substack.com)** - If you like getting email newsletters!
-- **[Telegram](https://t.me/brandtcormorantprojects)** - I try not to spend time here.
 - **Email** - firstlast at proton dot me - A pit that I infrequently gaze into, contemplate my life choices, and imagine I am alone in a sparse forest, walking gently in the sun, eating wood sorrel seed pods, feeling at peace with the destruction of the world.
