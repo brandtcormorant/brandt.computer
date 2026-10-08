@@ -1,5 +1,5 @@
 #!/usr/bin/env relay
-/// Build the site: content/ in, _site/ out. GitHub Pages serves _site/.
+/// Build the site: content/ in, docs/ out. GitHub Pages serves docs/.
 ///
 ///     relay build.relay
 import files
@@ -7,7 +7,7 @@ import log
 import path
 import process
 import runtime
-import static_site
+import staticdocs
 
 let root = runtime.module_directory() as String
 
@@ -17,16 +17,16 @@ let content = path.join([
 ])
 let output = path.join([
     root,
-    "_site",
+    "docs",
 ])
 
 let main = Function ()! {
-    // _site/ is only ever build output; clear it so removed pages do not linger.
+    // docs/ is only ever build output; clear it so removed pages do not linger.
     if (files.exists(output)) {
         files.remove_tree(output)
     }
 
-    let site = static_site.Site.make(content, output, "Brandt Cormorant")
+    let site = staticdocs.Site.make(content, output, "Brandt Cormorant")
     let pages = site.build()
 
     let noun = if (pages.length() == 1) {
