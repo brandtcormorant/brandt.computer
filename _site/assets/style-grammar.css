@@ -1,0 +1,644 @@
+/*
+  style-grammar: the workshop house style.
+
+  Drop in with one <link>. Styles plain HTML elements; no classes needed.
+  Uses only features Baseline lists as newly or widely available.
+  Experimental enhancements live in style-grammar-edge.css.
+
+  Everything sits inside the `grammar` cascade layer, so any unlayered
+  CSS on the page overrides it regardless of specificity.
+*/
+
+@layer grammar.reset, grammar.tokens, grammar.base, grammar.edge;
+
+/* ------------------------------------------------------------------ */
+/* Reset                                                              */
+/* ------------------------------------------------------------------ */
+
+@layer grammar.reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  svg,
+  canvas {
+    max-width: 100%;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6, p, li, dd, blockquote, figcaption, caption) {
+    overflow-wrap: break-word;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Tokens                                                             */
+/* ------------------------------------------------------------------ */
+
+/*
+  Colors come in families. Each family has one job.
+
+  Neutrals  paper, line, ink. Carry no meaning; all hierarchy comes from them.
+  Act       you can act here: links, focus, selection.
+  State     what condition something is in. Saturated, rare, always with a glyph.
+  Identity  which thing this is. Muted, stable, ordered by contrast with paper.
+
+  Within a family, members differ in lightness so a grayscale rendering
+  still tells them apart. Each value is written as oklch() so lightness
+  is the first number.
+*/
+
+@layer grammar.tokens {
+  :root {
+    color-scheme: light dark;
+
+    /* Neutrals */
+    --paper:   light-dark(oklch(0.985 0.004 95), oklch(0.20 0.008 250));
+    --paper-2: light-dark(oklch(0.955 0.005 95), oklch(0.24 0.008 250));
+    --line:    light-dark(oklch(0.86 0.006 95),  oklch(0.34 0.010 250));
+    --line-2:  light-dark(oklch(0.70 0.008 95),  oklch(0.48 0.012 250));
+    --ink-2:   light-dark(oklch(0.48 0.010 95),  oklch(0.72 0.010 250));
+    --ink:     light-dark(oklch(0.24 0.010 95),  oklch(0.92 0.006 250));
+
+    /* Act */
+    --act: light-dark(oklch(0.50 0.15 255), oklch(0.74 0.12 250));
+
+    /* State, after IEC 60073 */
+    --stop:    light-dark(oklch(0.53 0.19 28), oklch(0.62 0.19 25));
+    --normal:  light-dark(oklch(0.62 0.14 150), oklch(0.75 0.15 150));
+    --caution: light-dark(oklch(0.84 0.16 85), oklch(0.88 0.15 90));
+    /* Yellow on light paper is too faint alone; its glyph gets an ink edge, like a warning sign. */
+    --caution-edge: light-dark(oklch(0.24 0.010 95), transparent);
+
+    --glyph-stop: "■";
+    --glyph-caution: "▲";
+    --glyph-normal: "●";
+    --glyph-working: "◌";
+
+    /* Identity: id-1 has the most contrast with paper in both themes */
+    --id-1: light-dark(oklch(0.40 0.080 300), oklch(0.88 0.050 300));
+    --id-2: light-dark(oklch(0.53 0.075 200), oklch(0.73 0.070 200));
+    --id-3: light-dark(oklch(0.66 0.080 65),  oklch(0.58 0.080 65));
+
+    /* Type */
+    --font-sans:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen, Ubuntu, Cantarell,
+      "Helvetica Neue",
+      Arial,
+      sans-serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+    --text-label: 0.75rem;
+    --text-small: 0.8125rem;
+    --text-code: 0.875em;
+
+    /* Space */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2.5rem;
+
+    /* Shape */
+    --measure: 70ch;
+    --radius: 3px;
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                               */
+/* ------------------------------------------------------------------ */
+
+@layer grammar.base {
+  html {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  body {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: var(--space-5) var(--space-3);
+  }
+
+  /* Flow: blocks space themselves below, never above. */
+  :where(p, ul, ol, dl, pre, blockquote, table, figure, fieldset, details, form) {
+    margin-block: 0 var(--space-3);
+  }
+
+  /* Containers do not add space at their own edges. */
+  :where(dialog, [popover], fieldset, details, blockquote, li, dd, td, th) > :first-child {
+    margin-block-start: 0;
+  }
+
+  :where(dialog, [popover], fieldset, details, blockquote, li, dd, td, th) > :last-child {
+    margin-block-end: 0;
+  }
+
+  /* Headings ------------------------------------------------------- */
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-block: var(--space-5) var(--space-2);
+    font-weight: 600;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+
+  h1 {
+    margin-block-start: 0;
+    font-size: 1.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* The section label sits in the frame line, as on a panel. */
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+
+    &::after {
+      content: "";
+      flex: 1;
+      border-block-start: 1px solid var(--line);
+    }
+  }
+
+  h3 {
+    font-size: 1.0625rem;
+  }
+
+  /* Labels: small, tracked capitals, the engraved legend under a control. */
+  h4, h5, h6, legend, th {
+    font-size: var(--text-label);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  h4, h5, h6 {
+    margin-block-start: var(--space-4);
+  }
+
+  /* Text ----------------------------------------------------------- */
+
+  a {
+    color: var(--act);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+
+    &:hover {
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--act);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: color-mix(in oklch, var(--act) 25%, transparent);
+  }
+
+  strong, b {
+    font-weight: 600;
+  }
+
+  small {
+    font-size: var(--text-small);
+  }
+
+  /* A highlight, not a warning: yellow means caution here, so mark stays neutral. */
+  mark {
+    background: color-mix(in oklch, var(--ink) 12%, transparent);
+    color: inherit;
+  }
+
+  abbr[title] {
+    text-decoration: underline dotted;
+    text-underline-offset: 0.2em;
+    cursor: help;
+  }
+
+  del {
+    color: var(--ink-2);
+  }
+
+  sub, sup {
+    position: relative;
+    font-size: 0.75em;
+    line-height: 0;
+    vertical-align: baseline;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+
+  /* Numbers are instruments: digits keep fixed widths. */
+  data, output, table, ol {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* A value and its unit never break apart. */
+  data, output {
+    white-space: nowrap;
+  }
+
+  code, kbd, samp, pre {
+    font-family: var(--font-mono);
+    font-size: var(--text-code);
+  }
+
+  code {
+    padding: 0.1em 0.3em;
+    border-radius: var(--radius);
+    background: var(--paper-2);
+  }
+
+  kbd {
+    padding: 0.05em 0.35em;
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius);
+  }
+
+  pre {
+    overflow-x: auto;
+    padding: var(--space-3);
+    border-radius: var(--radius);
+    background: var(--paper-2);
+    line-height: 1.45;
+
+    & code {
+      padding: 0;
+      background: none;
+      font-size: inherit;
+    }
+  }
+
+  blockquote {
+    margin-inline: 0;
+    padding-inline-start: var(--space-3);
+    border-inline-start: 3px solid var(--line);
+    color: var(--ink-2);
+  }
+
+  hr {
+    margin-block: var(--space-5);
+    border: 0;
+    border-block-start: 1px solid var(--line);
+  }
+
+  /* Lists ---------------------------------------------------------- */
+
+  ul, ol {
+    padding-inline-start: 1.5em;
+  }
+
+  /* A dash, so list markers never look like state glyphs. */
+  ul {
+    list-style-type: "– ";
+  }
+
+  li + li {
+    margin-block-start: var(--space-1);
+  }
+
+  li > :is(ul, ol) {
+    margin-block: var(--space-1) 0;
+  }
+
+  dt {
+    font-weight: 600;
+  }
+
+  dd {
+    margin-inline-start: 1.5em;
+
+    & + dt {
+      margin-block-start: var(--space-2);
+    }
+  }
+
+  /* Tables --------------------------------------------------------- */
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-block: 1px solid var(--line-2);
+  }
+
+  caption {
+    padding-block-end: var(--space-2);
+    text-align: start;
+    font-size: var(--text-small);
+    color: var(--ink-2);
+  }
+
+  th, td {
+    padding: 0.375rem 0.75rem;
+    vertical-align: top;
+
+    &:first-child {
+      padding-inline-start: 0;
+    }
+
+    &:last-child {
+      padding-inline-end: 0;
+    }
+  }
+
+  th {
+    vertical-align: bottom;
+
+    /* Respect align from Markdown renderers. */
+    &:not([align]) {
+      text-align: start;
+    }
+  }
+
+  thead th {
+    border-block-end: 1px solid var(--line-2);
+  }
+
+  tbody tr + tr {
+    border-block-start: 1px solid var(--line);
+  }
+
+  /* Wrap a wide table in a figure and the figure scrolls, not the page. */
+  figure:has(> table) {
+    overflow-x: auto;
+  }
+
+  /* A cell holding only a <data> value is a number: right-align it. */
+  td:has(> data:only-child) {
+    text-align: end;
+  }
+
+  /* Figures -------------------------------------------------------- */
+
+  figure {
+    margin-inline: 0;
+  }
+
+  figcaption {
+    margin-block-start: var(--space-2);
+    font-size: var(--text-small);
+    color: var(--ink-2);
+  }
+
+  /* Forms ---------------------------------------------------------- */
+
+  /* A group is a panel: a frame with its label in the frame line. */
+  fieldset {
+    min-inline-size: 0;
+    padding: var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  legend {
+    padding-inline: var(--space-2);
+    margin-inline-start: calc(-1 * var(--space-2));
+  }
+
+  label {
+    display: block;
+    margin-block-end: var(--space-1);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  label:has(> input:is([type="checkbox"], [type="radio"])) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  /* :where keeps this at zero specificity, so :user-invalid and :disabled can override it. */
+  :where(input:not([type="checkbox"], [type="radio"], [type="range"], [type="color"], [type="file"], [type="submit"], [type="button"], [type="reset"], [type="image"], [type="hidden"]), select, textarea) {
+    display: block;
+    width: 100%;
+    margin-block-end: var(--space-3);
+    padding: 0.375rem 0.5rem;
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius);
+    background: var(--paper);
+  }
+
+  textarea {
+    min-block-size: 6rem;
+    resize: vertical;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin: 0;
+  }
+
+  input[type="range"] {
+    width: 100%;
+  }
+
+  ::placeholder {
+    color: var(--ink-2);
+    opacity: 1;
+  }
+
+  /* Invalid after the person has interacted: stop color plus a heavier edge, so it reads without color. */
+  :user-invalid,
+  :is(input, select, textarea)[aria-invalid="true"] {
+    border-color: var(--stop);
+    border-inline-start-width: 4px;
+  }
+
+  :disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  button,
+  input:is([type="submit"], [type="button"], [type="reset"]),
+  ::file-selector-button {
+    padding: 0.375rem 0.875rem;
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius);
+    background: var(--paper-2);
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      background: color-mix(in oklch, var(--paper-2), var(--ink) 6%);
+    }
+
+    &:active:not(:disabled) {
+      background: color-mix(in oklch, var(--paper-2), var(--ink) 12%);
+    }
+  }
+
+  /* Disclosure and overlays ---------------------------------------- */
+
+  summary {
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  details[open] > summary {
+    margin-block-end: var(--space-2);
+  }
+
+  dialog,
+  [popover] {
+    max-inline-size: min(var(--measure), calc(100vw - 2 * var(--space-3)));
+    padding: var(--space-4);
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius);
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  /* Only modal dialogs dim the page; popovers stay light. */
+  dialog::backdrop {
+    background: rgb(0 0 0 / 0.4);
+    background: color-mix(in oklch, var(--ink) 30%, transparent);
+  }
+
+  /* State ---------------------------------------------------------- */
+
+  /*
+    data-state names a condition. The glyph carries it without color;
+    the color carries it without the glyph. Normal is quiet by default:
+    in a dark board, only deviations light up, so an application at rest
+    shows no state at all.
+  */
+  [data-state="stop"] {
+    --signal: var(--stop);
+    --glyph: var(--glyph-stop);
+  }
+
+  [data-state="caution"] {
+    --signal: var(--caution);
+    --glyph: var(--glyph-caution);
+  }
+
+  [data-state="normal"] {
+    --signal: var(--normal);
+    --glyph: var(--glyph-normal);
+  }
+
+  /*
+    Working is a signal, not a state: something is under way and nothing is
+    wrong. It is ink, hollow where the states are filled, and it breathes
+    slowly instead of blinking.
+  */
+  [data-state="working"] {
+    --signal: var(--ink);
+    --glyph: var(--glyph-working);
+  }
+
+  /* The glyph replaces the list marker rather than following it. */
+  li[data-state] {
+    list-style-type: none;
+  }
+
+  [data-state]::before {
+    content: var(--glyph) / "";
+    margin-inline-end: 0.4em;
+    color: var(--signal);
+  }
+
+  [data-state="caution"]::before {
+    text-shadow:
+      1px 0 var(--caution-edge),
+      -1px 0 var(--caution-edge),
+      0 1px var(--caution-edge),
+      0 -1px var(--caution-edge);
+  }
+
+  /*
+    Only the glyph breathes; the word beside it holds still. The dotted
+    circle draws smaller and lighter than the filled glyphs, so it is set
+    larger to match them, without growing the line.
+  */
+  [data-state="working"]::before {
+    font-size: 1.25em;
+    line-height: 0;
+    animation: grammar-breathe 1.6s ease-in-out infinite alternate;
+  }
+
+  @keyframes grammar-breathe {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0.35;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-state="working"]::before {
+      animation: none;
+    }
+  }
+
+  /* Print ---------------------------------------------------------- */
+
+  @media print {
+    :root {
+      color-scheme: light;
+    }
+
+    body {
+      max-width: none;
+      padding: 0;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    pre, blockquote, table, figure {
+      break-inside: avoid;
+    }
+  }
+}

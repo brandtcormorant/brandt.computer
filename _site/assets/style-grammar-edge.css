@@ -1,0 +1,28 @@
+/*
+  style-grammar edge: experimental enhancements.
+
+  Load after style-grammar.css. Every rule here is a progressive
+  enhancement: a page reads correctly when the browser ignores it.
+  Each entry names its Baseline status (webstatus.dev, 2026-10-01)
+  and what happens without it.
+*/
+
+@layer grammar.edge {
+  /*
+    accent-color: limited.
+    Checkboxes, radios, range sliders, and progress bars take the act color.
+    Without it they use the platform's own accent.
+  */
+  :root {
+    accent-color: var(--act);
+  }
+
+  /*
+    text-wrap: pretty: limited.
+    Avoids one-word last lines in running text.
+    Without it lines wrap greedily.
+  */
+  p, li, dd, blockquote, figcaption {
+    text-wrap: pretty;
+  }
+}
