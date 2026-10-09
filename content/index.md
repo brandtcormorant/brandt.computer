@@ -7,7 +7,7 @@ title: Brandt Cormorant
 <p>Let's do something better.</p>
 </header>
 
-Hi, I'm Brandt. I have fun making neat things.
+Hi, I'm Brandt.
 
 I'm working on making distributed software easier for people who are just getting started. The transition from centralized technologies can be difficult and there's so much we can do to improve the experience for people.
 
